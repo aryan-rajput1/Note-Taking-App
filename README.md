@@ -22,7 +22,6 @@ Commit your changes (git commit -am 'Add some feature')
 Push to the branch (git push origin feature/your-feature-name)
 Create a new pull request
 Credits
-This project was created by [Your Name Here]. If you have any questions or feedback, please contact me at [Your Email Here].
+This project was created by [Kumar Aryan Chauhan]. If you have any questions or feedback, please contact me at [aryanchauhan2401@gmail.com].
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
