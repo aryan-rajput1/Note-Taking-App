@@ -1,12 +1,11 @@
 import "./styles.css";
-import React, { Component } from 'react';
+import React, { Component } from "react";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       notes: [],
-      newNote: '',
-      selectedContentOption: 'text',
+      newNote: ""
     };
   }
 
@@ -16,13 +15,12 @@ class App extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { notes, newNote, selectedContentOption } = this.state;
+    const { notes, newNote } = this.state;
     const newNoteObject = {
-      content: newNote,
-      type: selectedContentOption,
+      content: newNote
     };
     const updatedNotes = [...notes, newNoteObject];
-    this.setState({ notes: updatedNotes, newNote: '', selectedContentOption: 'text' });
+    this.setState({ notes: updatedNotes, newNote: "" });
   };
 
   handleNoteDelete = (index) => {
@@ -35,56 +33,41 @@ class App extends Component {
     this.setState({ notes: [] });
   };
 
-  handleContentOptionChange = (event) => {
-    this.setState({ selectedContentOption: event.target.value });
-  };
-  
-
   render() {
-    const { notes, newNote, selectedContentOption } = this.state;
+    const { notes, newNote } = this.state;
     return (
       <div>
-      <h1>Note Taking App</h1>
-      <form onSubmit={this.handleFormSubmit}>
-        <input
-          type="text"
-          value={newNote}
-          onChange={this.handleInputChange}
-          placeholder="Add a new note"
-        />
-        <select
-          value={selectedContentOption}
-          onChange={this.handleContentOptionChange}
-        >
-          <option value="text" className="text-option">Text</option>
-          <option value="image">Image</option>
-          <option value="video">Video</option>
-        </select>
-        <button type="submit">Add Note</button>
-      </form>
-      <ul>
-  {notes.map((note, index) => (
-    <li key={index}>
-      {note.content}
-      <button
-        className="delete-btn"
-        onClick={() => this.handleNoteDelete(index)}
-      >
-        X
-      </button>
-    </li>
-  ))}
-</ul>
+        <h1>Note Taking App</h1>
+        <form onSubmit={this.handleFormSubmit}>
+          <input
+            type="text"
+            value={newNote}
+            onChange={this.handleInputChange}
+            placeholder="Add a new note"
+          />
 
-      <button className="clear-btn" onClick={this.handleClearList}>
-        Clear List
-      </button>
-    </div>
-  
+          <button type="submit">Add Note</button>
+        </form>
+        <ul>
+          {notes.map((note, index) => (
+            <li key={index}>
+              {note.content}
+              <button
+                className="delete-btn"
+                onClick={() => this.handleNoteDelete(index)}
+              >
+                X
+              </button>
+            </li>
+          ))}
+        </ul>
 
+        <button className="clear-btn" onClick={this.handleClearList}>
+          Clear List
+        </button>
+      </div>
     );
   }
 }
 
 export default App;
-
